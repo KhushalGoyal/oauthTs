@@ -1,0 +1,1 @@
+{"version":3,"file":"scope.interface.js","sourceRoot":"","sources":["../../src/interfaces/scope.interface.ts"],"names":[],"mappings":"","sourcesContent":["interface OAuthScope {\n    is_default : boolean,\n    scope : string | string[]\n}\n\nexport default OAuthScope;"]}

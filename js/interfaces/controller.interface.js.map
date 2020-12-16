@@ -1,0 +1,1 @@
+{"version":3,"file":"controller.interface.js","sourceRoot":"","sources":["../../src/interfaces/controller.interface.ts"],"names":[],"mappings":"","sourcesContent":["import { Router } from 'express';\n\ninterface Controller {\n    path: string;\n    router: Router;\n}\n\nexport default Controller;"]}
