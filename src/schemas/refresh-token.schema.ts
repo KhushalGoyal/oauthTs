@@ -8,5 +8,4 @@ const refreshTokenSchema = new Schema({
   user: { type: Types.ObjectId, ref: "User", required: true },
 });
 
-const refreshTokenModel = model("RefreshToken", refreshTokenSchema);
-export default refreshTokenModel;
+export const refreshTokenModel = model("RefreshToken", refreshTokenSchema);

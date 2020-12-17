@@ -1,10 +1,9 @@
-interface OAuthClient {
-  name: string;
-  client_id: string;
-  client_secret: string;
-  grants: string | string[];
-  redirectUri: string | string[];
-  scope: string | string[];
+import { Client } from 'oauth2-server'
+
+interface OAuthClient extends Client{
+  name : string
+  clientId : string
+  clientSecret : string
 }
 
 export default OAuthClient;

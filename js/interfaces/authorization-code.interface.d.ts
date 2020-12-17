@@ -1,7 +1,6 @@
 import Client from "./client.interface";
 import User from "./user.interface";
-
-interface OAuthAuthorizationCode {
+export interface OAuthAuthorizationCode {
   authorizationCode: string;
   expiresAt: Date;
   redirectUri: string;
@@ -9,5 +8,3 @@ interface OAuthAuthorizationCode {
   client: Client;
   user: User;
 }
-
-export default OAuthAuthorizationCode;

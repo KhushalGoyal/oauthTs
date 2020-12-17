@@ -1,5 +1,4 @@
 /// <reference types="mongoose" />
-declare const clientModel: import("mongoose").Model<
+export declare const clientModel: import("mongoose").Model<
   import("mongoose").Document
 >;
-export default clientModel;

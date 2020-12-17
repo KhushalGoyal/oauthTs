@@ -1,23 +1,25 @@
-import * as express from "express";
-import Controller from "./interfaces/controller.interface";
+import express from "express";
 import * as bodyParser from "body-parser";
 import errorMiddleware from "./middleware/error-middleware";
-import * as mongoose from "mongoose";
-
+import moongoose from "mongoose";
+import { ConfigEnv, Config } from './helpers/config'
+import OauthController from "./oauth/oauth.controller";
 class App {
   public app: express.Application;
-  constructor(controller: Controller[]) {
+  public config: Config;
+  constructor() {
     this.app = express();
-
+    this.config = ConfigEnv;
+    console.log(this.config)
     this.connectDB();
     this.initializeMiddleware();
-    this.initializeControllers(controller);
+    this.initializeControllers();
     this.initializeErrorHandler();
   }
 
   public listen() {
     this.app.listen(process.env.PORT, () => {
-      // console.log(`App listening on the port ${process.env.PORT}`);
+      console.log(`App listening on the port ${process.env.PORT}`);
     });
   }
 
@@ -25,17 +27,15 @@ class App {
     const { MONGO_PORT, MONGO_DB, MONGO_HOST } = process.env;
     //   mongodb://localhost:27017/oauthServer
     // console.log(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`);
-    mongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`);
+    moongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`);
   }
 
   public initializeMiddleware() {
     this.app.use(bodyParser.json());
   }
 
-  public initializeControllers(controllers: Controller[]) {
-    controllers.forEach((controller) => {
-      this.app.use("/", controller.router);
-    });
+  public initializeControllers() {
+    this.app.use(OauthController);
   }
 
   public initializeErrorHandler() {

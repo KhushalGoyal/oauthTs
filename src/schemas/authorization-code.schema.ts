@@ -9,8 +9,7 @@ const authorizationCodeSchema = new Schema({
   user: { type: Types.ObjectId, ref: "User", required: true },
 });
 
-const authorizationCodeModel = model(
+export const authorizationCodeModel = model(
   "AuthorizationCode",
   authorizationCodeSchema
 );
-export default authorizationCodeModel;

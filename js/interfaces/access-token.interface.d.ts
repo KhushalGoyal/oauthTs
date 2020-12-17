@@ -1,10 +1,12 @@
 import Client from "./client.interface";
 import User from "./user.interface";
-interface OAuthAccessToken {
+import { Document } from "mongoose";
+export interface OAuthAccessToken extends Document {
   accessToken: string;
-  accessTokenExpiresAt?: Date;
+  accessTokenExpiresAt: Date;
+  refreshToken: string;
+  refreshTokenExpiresAt: Date;
   scope?: string | string[];
   client: Client;
   user: User;
 }
-export default OAuthAccessToken;

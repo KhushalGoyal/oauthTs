@@ -1,13 +1,12 @@
 import { Schema, model } from "mongoose";
 
 const clientSchema = new Schema({
-  name: String,
-  client_id: String,
-  client_secret: String,
-  grants: Array,
-  refirectUri: Array,
-  scope: Array,
+  name: { type : String, required : true},
+  clientId: { type : String, required : true},
+  clientSecret: { type : String, required : true},
+  grants: { type : String, required : true },
+  refirectUris: { type : String, required: true},
+  scope: { type : Array, required : true}
 });
 
-const clientModel = model("Client", clientSchema);
-export default clientModel;
+export const clientModel = model("Client", clientSchema);

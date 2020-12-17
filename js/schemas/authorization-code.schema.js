@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.authorizationCodeModel = void 0;
 const mongoose_1 = require("mongoose");
 const authorizationCodeSchema = new mongoose_1.Schema({
   authorizationCode: String,
@@ -9,9 +10,8 @@ const authorizationCodeSchema = new mongoose_1.Schema({
   client: { type: mongoose_1.Types.ObjectId, ref: "Client", required: true },
   user: { type: mongoose_1.Types.ObjectId, ref: "User", required: true },
 });
-const authorizationCodeModel = mongoose_1.model(
+exports.authorizationCodeModel = mongoose_1.model(
   "AuthorizationCode",
   authorizationCodeSchema
 );
-exports.default = authorizationCodeModel;
 //# sourceMappingURL=authorization-code.schema.js.map

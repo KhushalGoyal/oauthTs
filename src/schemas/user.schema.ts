@@ -1,11 +1,10 @@
 import { Schema, Types, model } from "mongoose";
 
 const userSchema = new Schema({
-  username: Boolean,
-  password: Array,
+  username: String,
+  password: String,
   client: { type: Types.ObjectId, ref: "Client", required: true },
+  loginEnabled: Boolean
 });
 
-const userModel = model("Scope", userSchema);
-
-export default userModel;
+export const userModel = model("User", userSchema);

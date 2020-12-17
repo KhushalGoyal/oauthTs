@@ -5,5 +5,4 @@ const scopeSchema = new Schema({
   scope: Array,
 });
 
-const scopeModel = model("Scope", scopeSchema);
-export default scopeModel;
+export const scopeModel = model("Scope", scopeSchema);
