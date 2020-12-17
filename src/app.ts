@@ -2,7 +2,7 @@ import express from "express";
 import * as bodyParser from "body-parser";
 import errorMiddleware from "./middleware/error-middleware";
 import moongoose from "mongoose";
-import { ConfigEnv, Config } from './helpers/config'
+import { ConfigEnv, Config } from "./helpers/config";
 import OauthController from "./oauth/oauth.controller";
 class App {
   public app: express.Application;
@@ -10,7 +10,6 @@ class App {
   constructor() {
     this.app = express();
     this.config = ConfigEnv;
-    console.log(this.config)
     this.connectDB();
     this.initializeMiddleware();
     this.initializeControllers();
@@ -18,9 +17,7 @@ class App {
   }
 
   public listen() {
-    this.app.listen(process.env.PORT, () => {
-      console.log(`App listening on the port ${process.env.PORT}`);
-    });
+    this.app.listen(process.env.PORT, () => {});
   }
 
   public connectDB() {
