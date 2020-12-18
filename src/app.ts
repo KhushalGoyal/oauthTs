@@ -3,7 +3,9 @@ import * as bodyParser from "body-parser";
 import errorMiddleware from "./middleware/error-middleware";
 import moongoose from "mongoose";
 import { ConfigEnv, Config } from "./helpers/config";
-import OauthController from "./oauth/oauth.controller";
+import OauthController from "./controllers/oauth/oauth.controller";
+import { clientModelImp } from "./controllers/client/client.model";
+import { userModelImpl } from "./controllers/user/user.model";
 class App {
   public app: express.Application;
   public config: Config;
@@ -14,6 +16,7 @@ class App {
     this.initializeMiddleware();
     this.initializeControllers();
     this.initializeErrorHandler();
+    this.creatInitialClientAndUser()
   }
 
   public listen() {
@@ -37,6 +40,17 @@ class App {
 
   public initializeErrorHandler() {
     this.app.use(errorMiddleware);
+  }
+
+  public async creatInitialClientAndUser(){
+    let client = await clientModelImp.getClinetByClientId('MANAGEMENT_PORTAL');
+    let user = await userModelImpl.getUserByName('khushalg123')
+    if(!client){
+      await clientModelImp.createStaticClient()
+    }
+    if(!user){
+      await userModelImpl.createStaticUser()
+    }
   }
 }
 

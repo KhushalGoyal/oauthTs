@@ -1,6 +1,6 @@
 import OAuth2Server from "oauth2-server";
 import { OauthImpl } from "./oauth.model";
-import { ConfigEnv } from "../helpers/config";
+import { ConfigEnv } from "../../helpers/config";
 
 export const oauth = new OAuth2Server({
   model: OauthImpl as any,

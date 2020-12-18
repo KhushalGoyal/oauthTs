@@ -17,6 +17,7 @@ export interface BaseAuthRequest {
   username: string;
   password: string;
   client_id: string;
+  client_secret: string;
   response_type: string;
   redirect_uri: string;
   state: string;

@@ -7,20 +7,20 @@ import {
   User,
   Client,
 } from "oauth2-server";
-import OAuthClient from "../interfaces/client.interface";
-import OAuthUser from "../interfaces/user.interface";
-import { TokenHelper } from "../helpers/tokenhelper";
-import { Config, ConfigEnv } from "../helpers/config";
+import OAuthClient from "../../interfaces/client.interface";
+import OAuthUser from "../../interfaces/user.interface";
+import { TokenHelper } from "../../helpers/tokenhelper";
+import { Config, ConfigEnv } from "../../helpers/config";
 import {
   userModel,
   clientModel,
   accessTokenModel,
   authorizationCodeModel,
-} from "../schemas";
-import { OAuthAccessToken } from "../interfaces/access-token.interface";
-import { OAuthAuthorizationCode } from "../interfaces/authorization-code.interface";
-import { PasswordHelper } from "../helpers/passwordhelper";
-import { AppException, StatusCodes, ErrorCodes } from "../response/base";
+} from "../../schemas";
+import { OAuthAccessToken } from "../../interfaces/access-token.interface";
+import { OAuthAuthorizationCode } from "../../interfaces/authorization-code.interface";
+import { PasswordHelper } from "../../helpers/passwordhelper";
+import { AppException, StatusCodes, ErrorCodes } from "../../response/base";
 import { Types } from "mongoose";
 
 export class OauthModel implements BaseModel {
@@ -51,9 +51,9 @@ export class OauthModel implements BaseModel {
     clientSecret: string
   ): Promise<OAuthClient> {
     const filter = {
-      clientId,
-      clientSecret,
+      clientId
     };
+    console.log("Get Client Details", filter)
     return (clientModel.findOne(filter).lean() as any) as OAuthClient;
   }
 

@@ -54,7 +54,7 @@ export class Config {
       BASE_URL: joi.string().uri({
         scheme: [/http?/],
       }),
-      SALT: joi.string(),
+      SALT: joi.number(),
     });
 
     /**
