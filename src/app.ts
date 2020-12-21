@@ -16,7 +16,7 @@ class App {
     this.initializeMiddleware();
     this.initializeControllers();
     this.initializeErrorHandler();
-    this.creatInitialClientAndUser()
+    this.creatInitialClientAndUser();
   }
 
   public listen() {
@@ -42,14 +42,16 @@ class App {
     this.app.use(errorMiddleware);
   }
 
-  public async creatInitialClientAndUser(){
-    let client = await clientModelImp.getClinetByClientId('MANAGEMENT_PORTAL');
-    let user = await userModelImpl.getUserByName('khushalg123')
-    if(!client){
-      await clientModelImp.createStaticClient()
+  public async creatInitialClientAndUser() {
+    const client = await clientModelImp.getClinetByClientId(
+      "MANAGEMENT_PORTAL"
+    );
+    const user = await userModelImpl.getUserByName("khushalg123");
+    if (!client) {
+      await clientModelImp.createStaticClient();
     }
-    if(!user){
-      await userModelImpl.createStaticUser()
+    if (!user) {
+      await userModelImpl.createStaticUser();
     }
   }
 }

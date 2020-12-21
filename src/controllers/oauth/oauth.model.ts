@@ -46,14 +46,10 @@ export class OauthModel implements BaseModel {
     return this.generateToken(userPayload, client);
   }
 
-  public async getClient(
-    clientId: string,
-    clientSecret: string
-  ): Promise<OAuthClient> {
+  public async getClient(clientId: string): Promise<OAuthClient> {
     const filter = {
-      clientId
+      clientId,
     };
-    console.log("Get Client Details", filter)
     return (clientModel.findOne(filter).lean() as any) as OAuthClient;
   }
 

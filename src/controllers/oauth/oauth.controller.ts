@@ -15,7 +15,10 @@ import {
 import { TokenHelper } from "../../helpers/tokenhelper";
 import { BufferUtits } from "../../helpers/buffer-utils";
 import { AuthValidator } from "../../helpers/validator";
-import { Authentication, Authorization } from "../../middleware/oauth-middleware";
+import {
+  Authentication,
+  Authorization,
+} from "../../middleware/oauth-middleware";
 
 const OauthController = Router();
 
@@ -45,7 +48,6 @@ export const authHandler = async (
   const rq = new OauthRequest(req);
   const rs = new OauthResponse(res);
   try {
-    console.log("in Authhandler")
     const data = await oauth.authorize(rq, rs);
     let { location } = rs.headers;
     if (location.includes("#")) {
@@ -65,7 +67,6 @@ export const authHandler = async (
       })
     );
   } catch (err) {
-    console.log(err)
     handleError(err, req, res, rs);
   }
 };
@@ -84,7 +85,6 @@ export const tokenHandler = async (
       res.status(rs.status).send(rs.body);
     })
     .catch((err) => {
-      console.log(err)
       handleError(err, req, res, rs);
     });
 };
